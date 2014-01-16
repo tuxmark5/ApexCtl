@@ -1,0 +1,24 @@
+1. Install GHC, libusb-1.0-0-dev and cabal (as root):
+
+    aptitude install ghc libusb-1.0-0-dev cabal-install git pkg-config
+
+2. Fetch the list of packages:
+
+    cabal update
+
+3. Install USB bindings for haskell (no need for root):
+
+    cabal install usb
+
+4. Download the utility:
+
+    git clone git://github.com/tuxmark5/ApexCtl.git
+
+5. Build the utility:
+
+    cabal configure
+    cabal build
+
+6. Run the utility (also as root):
+
+    ./dist/build/apexctl/apexctl
