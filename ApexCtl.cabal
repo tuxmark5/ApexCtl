@@ -1,0 +1,17 @@
+name:           ApexCtl 
+version:        0.0.1
+cabal-version:  -any
+build-type:     Simple
+license:        AllRightsReserved
+build-depends:  base -any, 
+                binary -any,
+                bytestring -any, 
+                vector -any, 
+                usb -any
+description:    .
+author:         Audrius Šaikūnas
+executable:     apexctl
+main-is:        Main.hs
+buildable:      True
+hs-source-dirs: src
+ghc-options:    -threaded

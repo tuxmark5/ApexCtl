@@ -1,0 +1,11 @@
+#! /bin/sh
+
+echo REMOVE0
+echo -n "0000:05:00.0" | sudo tee /sys/bus/pci/drivers/xhci_hcd/unbind
+
+echo SLEEP
+sleep 3
+
+echo REMOVE0
+echo -n "0000:05:00.0" | sudo tee /sys/bus/pci/drivers/xhci_hcd/bind
+
