@@ -156,7 +156,7 @@ apexSetColorProfile devHndl cp = do
 
 main :: IO ()
 main = do
-  withDevice 0x1038 [0x1202] $ \dev -> do
+  withDevice 0x1038 [0x1200,0x1202] $ \dev -> do
   withDeviceHandle dev $ \devHndl ->
     withDetachedKernelDriver devHndl 0 $
     withClaimedInterface devHndl 0 $ do
