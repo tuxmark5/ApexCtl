@@ -78,21 +78,30 @@ cp2 c = SetColorProfile c c c c c
 
 {- ########################################################################################## -}
 
+pad :: a -> Int -> [a] -> [a]
+pad p 0 l     = l
+pad p n (h:l) = h:(pad p (n-1) l)
+pad p n []    = pad p n [p]
+
+{- ########################################################################################## -}
+
 cdataInit :: BS.ByteString
-cdataInit = BS.pack
-  [ 0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00
-  , 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  , 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  , 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  ]
+cdataInit = BS.pack $ pad 0x00 32 [ 0x02, 0x00, 0x02 ]
 
 cdata :: BS.ByteString
-cdata = BS.pack
-  [ 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  , 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  , 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  , 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-  ]
+cdata     = BS.pack $ pad 0x00 32 [ 0x16 ]
+
+-- rate in [0..3]
+-- 0 ->  125 Hz
+-- 1 ->  250 Hz
+-- 2 ->  500 Hz
+-- 3 -> 1000 Hz
+pollFrequency :: Word8 -> BS.ByteString
+pollFrequency rate = BS.pack $ pad 0x00 32 [ 0x04, 0x00, rate ]
+
+-- bLev in [1..8]
+brightness :: Word8 -> BS.ByteString
+brightness bLev    = BS.pack $ pad 0x00 32 [ 0x05, 0x01, bLev ]
 
 {- ########################################################################################## -}
 
@@ -152,17 +161,27 @@ apexSetColorProfile devHndl cp = do
   apexCtl devHndl $ toStrict1 $ encode cp
   threadDelay 10000
 
+apexRawSetBrightness :: DeviceHandle -> Word8 -> IO ()
+apexRawSetBrightness devHndl bLev = do
+  apexCtl devHndl $ brightness bLev
+
+apexSetFrequency :: DeviceHandle -> Word8 -> IO ()
+apexSetFrequency devHndl rate = do
+  apexCtl devHndl $ pollFrequency rate
+
 {- ########################################################################################## -}
 
 main :: IO ()
 main = do
-  withDevice 0x1038 [0x1202] $ \dev -> do
+  withDevice 0x1038 [0x1200,0x1202] $ \dev -> do
   withDeviceHandle dev $ \devHndl ->
     withDetachedKernelDriver devHndl 0 $
     withClaimedInterface devHndl 0 $ do
       res <- try $ do
         apexEnableExtraKeys devHndl
         --apexSetColorProfile devHndl cp0
+        --apexSetFrequency devHndl 3
+        --apexRawSetBrightness devHndl 8
       case res of
         Left (SomeException a)  -> putStrLn $ show a
         Right _                 -> putStrLn "OK"
