@@ -86,18 +86,25 @@ instance Read Color where
     [r0, g0, b0] ->
       [(Color (toComp1 r0) (toComp1 g0) (toComp1 b0) 8, [])]
 
-toAlpha :: Char -> Word8
-toAlpha alpha = case digitToInt alpha of 
-  a | a >= 0 && a <= 8 
-    -> fromIntegral a 
-  otherwise 
-    -> error "brightness must be between 0 and 8" 
-
 toComp1 :: Char -> Word8
 toComp1 a = fromIntegral $ (digitToInt a) * 0x10 + 0xF
 
 toComp2 :: Char -> Char -> Word8
 toComp2 a b = fromIntegral $ (digitToInt a) * 0x10 + (digitToInt b)
+
+toAlpha :: Char -> Word8
+toAlpha alpha = case digitToInt alpha of 
+  a | a >= 0 && a <= 8 
+    -> fromIntegral a 
+  otherwise 
+    -> error "alpha must be between 0 and 8" 
+
+toBrightness :: Int -> Word8
+toBrightness brightness = case brightness of 
+  b | b >= 1 && b <= 8 
+    -> fromIntegral b 
+  otherwise 
+    -> error "brightness must be between 1 and 8" 
 
 toFrequency :: Int -> Word8
 toFrequency  125 = 0
@@ -123,7 +130,7 @@ cp2 c = CmdSetColorProfile c c c c c
 data ApexMode
   = ModeEnableExtraKeys
   | ModeSetBrightness 
-  { argBrightness :: Word8 }
+  { argBrightness :: Int }
   | ModeSetColorProfile
   { argSouth  :: String
   , argEast   :: String
@@ -194,7 +201,7 @@ modeToCommand :: ApexMode -> ApexCommand
 
 modeToCommand m@ModeEnableExtraKeys {} = CmdEnableExtraKeys
 
-modeToCommand m@ModeSetBrightness {} = CmdSetBrightness (argBrightness m)
+modeToCommand m@ModeSetBrightness {} = CmdSetBrightness (toBrightness $ argBrightness m)
 
 modeToCommand m@ModeSetColorProfile {} = CmdSetColorProfile
   { colorSouth  = read $ argSouth m
