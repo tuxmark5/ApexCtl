@@ -1,11 +1,12 @@
 name:           ApexCtl 
-version:        0.0.1
+version:        0.0.2
 cabal-version:  -any
 build-type:     Simple
 license:        AllRightsReserved
 build-depends:  base -any, 
                 binary -any,
-                bytestring -any, 
+                bytestring -any,
+                cmdargs -any,
                 vector -any, 
                 usb -any
 description:    .
