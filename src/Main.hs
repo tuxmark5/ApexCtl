@@ -88,10 +88,10 @@ instance Read Color where
 
 toAlpha :: Char -> Word8
 toAlpha alpha = case digitToInt alpha of 
-  a | a >= 0 && a <= 8 
+  a | a >= 1 && a <= 8 
     -> fromIntegral a 
   otherwise 
-    -> error "brightness must be between 0 and 8" 
+    -> error "brightness must be between 1 and 8" 
 
 toComp1 :: Char -> Word8
 toComp1 a = fromIntegral $ (digitToInt a) * 0x10 + 0xF
