@@ -1,6 +1,7 @@
 1. Install GHC, libusb-1.0-0-dev and cabal (as root):
 
-    aptitude install ghc libusb-1.0-0-dev cabal-install git pkg-config
+    debian: aptitude install ghc libusb-1.0-0-dev cabal-install git pkg-config
+    fedora: sudo yum -y install ghc libusb libusb-devel cabal-install git pkgconfig
 
 2. Fetch the list of packages:
 
