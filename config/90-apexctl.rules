@@ -1,0 +1,7 @@
+# 1) Place this to /etc/udev/rules.d/90-apexctl.rules
+
+ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1200", \
+  RUN+="/usr/local/bin/apexctl"
+ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1202", \
+  RUN+="/usr/local/bin/apexctl"
+
