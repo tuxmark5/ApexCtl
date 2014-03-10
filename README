@@ -9,7 +9,7 @@
 
 3. Install USB bindings for haskell (no need for root):
 
-    cabal install usb
+    cabal install usb cmdargs
 
 4. Download the utility:
 
