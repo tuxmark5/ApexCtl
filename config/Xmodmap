@@ -8,8 +8,6 @@ keycode 185 = F31
 keycode 186 = F32
 keycode 187 = F33
 keycode 188 = F34
-keycode 189 = F35
-keycode 190 = XF86Launch5
 
 keycode 191 = F13
 keycode 192 = F14
