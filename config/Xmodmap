@@ -1,3 +1,6 @@
+!! begin ApexCtl
+
+!MX keys
 keycode 179 = F25
 keycode 180 = F26
 keycode 181 = F27
@@ -9,6 +12,7 @@ keycode 186 = F32
 keycode 187 = F33
 keycode 188 = F34
 
+!M keys
 keycode 191 = F13
 keycode 192 = F14
 keycode 193 = F15
@@ -22,3 +26,4 @@ keycode 200 = F22
 keycode 201 = F23
 keycode 202 = F24
 
+!! end ApexCtl
