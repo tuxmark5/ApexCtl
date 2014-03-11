@@ -16,13 +16,14 @@ binary = dist/build/apexctl/apexctl
 $(binary): $(hs_files)
 	cabal configure
 	cabal build
+apexctl: $(binary)
+	cp $(binary) $<
 
 #commands
 check-root:
 	[[ `whoami` = "root" ]]
 
-build: $(binary)
-	cp $(binary) apexctl
+build: $(binary) apexctl
 
 enable: check-root
 	xmodmap config/Xmodmap
