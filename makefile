@@ -29,8 +29,8 @@ check-root:
 build: $(binary) apexctl
 
 enable: check-root
-	xmodmap config/Xmodmap
 	./apexctl
+	xmodmap config/Xmodmap
 
 disable: check-root
 	./apex-reset
