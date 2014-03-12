@@ -17,7 +17,7 @@ $(binary): $(hs_files)
 	cabal configure
 	cabal build
 apexctl: $(binary)
-	cp $(binary) $<
+	cp $(binary) $@
 
 #commands
 check-root:
