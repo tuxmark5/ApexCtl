@@ -1,60 +1,66 @@
-# The map of the key codes used
+# The map of the key codes and mappings
 
 ## Apex
 
-M1    
-M2    
-M3    
-M4    
-M5    
-M6    
-M7    
-M8    
-M8    
-M9    
-M10   
-M11   
-M12   
+M1    144 = Find
+M2    185 = XF86ScrollUp
+M3    186 = XF86ScrollDown
+M4    184 = NoSymbol
+M5    xxx = Sleep
+M6    xxx = Lock
+M7    181 = XF86Reload
+M8    148 = XF86Calculator
+M9    248 = NoSymbol
+M10   248 = NoSymbol
+M11   248 = NoSymbol
+M12   248 = NoSymbol
 
-MX1   
-MX2   
-MX3   
-MX4   
-MX5   
-MX6   
-MX7   
-MX8   
-MX9   
-MX10  
+MX1   172 = XF86AudioPlay
+MX2   174 = XF86AudioStop
+MX3   173 = XF86AudioPrev
+MX4   171 = XF86AudioNext
+MX5   169 = XF86Eject
+MX6   123 = XF86AudioRaiseVolume
+MX7   122 = XF86AudioLowerVolume
+MX8   121 = XF86AudioMute
+MX9   158 = XF86WWW
+MX10  166 = XF86Back
 
-L1    248
-L2    248
-L3    248
-L4    248
+L1    248 = NoSymbol
+L2    248 = NoSymbol
+L3    248 = NoSymbol
+L4    248 = NoSymbol
+
+V+    123 = XF86AudioRaiseVolume
+V-    122 = XF86AudioLowerVolume
+Vmute 121 = XF86AudioMute
+Mprev 173 = XF86AudioPrev
+Mnext 171 = XF86AudioNext
+Mpaus 172 = XF86AudioPlay
 
 
 ## Apex Raw
 
 MX1   172 = Play/Pause
-MX2   174
+MX2   174 = 
 MX3   173 = AudioPrev
 MX4   171 = AudioNext
-MX5   169
+MX5   169 = 
 
-M1    144 
-M2    185
-M3    186
-M4    184
+M1    144 = 
+M2    185 = 
+M3    186 = 
+M4    184 = 
 
-M5    150
-M6    160
-M7    181
-M8    148
+M5    150 = 
+M6    160 = 
+M7    181 = 
+M8    148 = 
 
-M9    248
-M10   248
-M11   248
-M12   248
+M9    248 = NoSymbol
+M10   248 = NoSymbol
+M11   248 = NoSymbol
+M12   248 = NoSymbol
 
-L1    248
-L2    248
+L1    248 = NoSymbol
+L2    248 = NoSymbol
