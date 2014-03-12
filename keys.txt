@@ -1,0 +1,60 @@
+# The map of the key codes used
+
+## Apex
+
+M1    
+M2    
+M3    
+M4    
+M5    
+M6    
+M7    
+M8    
+M8    
+M9    
+M10   
+M11   
+M12   
+
+MX1   
+MX2   
+MX3   
+MX4   
+MX5   
+MX6   
+MX7   
+MX8   
+MX9   
+MX10  
+
+L1    248
+L2    248
+L3    248
+L4    248
+
+
+## Apex Raw
+
+MX1   172 = Play/Pause
+MX2   174
+MX3   173 = AudioPrev
+MX4   171 = AudioNext
+MX5   169
+
+M1    144 
+M2    185
+M3    186
+M4    184
+
+M5    150
+M6    160
+M7    181
+M8    148
+
+M9    248
+M10   248
+M11   248
+M12   248
+
+L1    248
+L2    248
