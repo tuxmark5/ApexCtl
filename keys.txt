@@ -3,12 +3,12 @@
 ## Apex
 
 M1    144 = Find
-M2    185 = XF86ScrollUp
-M3    186 = XF86ScrollDown
-M4    184 = NoSymbol
+M2    185 = F31
+M3    186 = F32
+M4    184 = F30
 M5    xxx = Sleep
 M6    xxx = Lock
-M7    181 = XF86Reload
+M7    181 = F27
 M8    148 = XF86Calculator
 M9    248 = NoSymbol
 M10   248 = NoSymbol
