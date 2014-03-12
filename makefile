@@ -19,10 +19,13 @@ $(binary): $(hs_files)
 apexctl: $(binary)
 	cp $(binary) $@
 
-#commands
+#checks
+check-build:
+	[ -f apexctl ]
 check-root:
 	[[ `whoami` = "root" ]]
 
+#basic commands
 build: $(binary) apexctl
 
 enable: check-root
@@ -30,25 +33,54 @@ enable: check-root
 	./apexctl
 
 disable: check-root
-	./reset-usb
+	./apex-reset
 
-install: check-root
+#global installation
+install: check-build check-root enable
+	#make dirs
 	mkdir -p /etc/udev/hwdb.d
 	mkdir -p /etc/udev/rules.d
-	install -m 755 apexctl /usr/local/bin
+	#install binary
+	install -m 755 apexctl /usr/local/bin/apexctl
+	#install udev rules
 	install config/90-apex.hwdb /etc/udev/hwdb.d
 	install config/90-apexctl.rules /etc/udev/rules.d
+	#install Xmodmap globally
 	cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak
 	cat config/Xmodmap >> /etc/X11/Xmodmap
+	#install reload udev rules
 	udevadm hwdb --update
 	udevadm control --reload
 
-uninstall: check-root
+uninstall: check-root disable
+	#remove binary and udev rules
 	rm /usr/local/apexctl \
 		/etc/udev/hwdb.d/90-apex.hwdb \
 		/etc/udev/rules.d/90-apexctl.rules
+	#unapply Xmodmap using backup made during install
 	[[ -f /etc/X11/Xmodmap.bak ]] && \
 		cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak2 && \
 		mv /etc/X11/Xmodmap.bak /etc/X11/Xmodmap
+	#install reload udev rules
 	udevadm hwdb --update
 	udevadm control --reload
+
+reinstall: check-build check-root \
+	uninstall install
+
+#local installation
+local-install: check-build
+	#make dirs
+	mkdir -p ~/.local/bin
+	#install binary
+	install apexctl ~/.local/bin/apexctl
+	chmod +x ~/.local/bin/apexctl
+	#install Xmodmap locally
+	install config/Xmodmap ~/.Xmodmap
+
+local-uninstall:
+	#remove binary and Xmodmap
+	rm -f ~/.local/bin/apexctl ~/.Xmodmap
+
+local-reinstall: check-build \
+	local-uninstall local-install
