@@ -24,6 +24,12 @@ check-build:
 	[ -f apexctl ]
 check-root:
 	[[ `whoami` = "root" ]]
+check-installed:
+	[ -f /usr/local/sbin/apexctl ]
+	[ -f /usr/local/sbin/apexctl-reset ]
+	[ -f /etc/udev/hwdb.d/90-apex.hwdb ]
+	[ -f /etc/udev/rules.d/90-apexctl.rules ]
+	[ -f /etc/X11/Xmodmap.bak ]
 
 #basic commands
 build: $(binary) apexctl
@@ -44,8 +50,8 @@ install: check-build check-root enable
 	install -m 755 apexctl /usr/local/sbin/apexctl
 	install -m 755 apexctl-reset /usr/local/sbin/apexctl-reset
 	#install udev rules
-	install config/90-apex.hwdb /etc/udev/hwdb.d
-	install config/90-apexctl.rules /etc/udev/rules.d
+	install config/90-apex.hwdb /etc/udev/hwdb.d/
+	install config/90-apexctl.rules /etc/udev/rules.d/
 	#install Xmodmap globally
 	cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak
 	cat config/Xmodmap >> /etc/X11/Xmodmap
