@@ -41,8 +41,8 @@ install: check-build check-root enable
 	mkdir -p /etc/udev/hwdb.d
 	mkdir -p /etc/udev/rules.d
 	#install binary
-	install -m 755 apexctl /usr/local/bin/apexctl
-	install -m 755 apexctl-reset /usr/local/bin/apexctl-reset
+	install -m 755 apexctl /usr/local/sbin/apexctl
+	install -m 755 apexctl-reset /usr/local/sbin/apexctl-reset
 	#install udev rules
 	install config/90-apex.hwdb /etc/udev/hwdb.d
 	install config/90-apexctl.rules /etc/udev/rules.d
@@ -56,8 +56,8 @@ install: check-build check-root enable
 uninstall: check-root disable
 	#remove binary and udev rules
 	rm -f \
-		/usr/local/bin/apexctl \
-		/usr/local/bin/apexctl-reset \
+		/usr/local/sbin/apexctl \
+		/usr/local/sbin/apexctl-reset \
 		/etc/udev/hwdb.d/90-apex.hwdb \
 		/etc/udev/rules.d/90-apexctl.rules
 	#unapply Xmodmap using backup made during install
