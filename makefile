@@ -36,14 +36,14 @@ check-installed:
 build: $(binary) apexctl
 
 enable: check-root
-	./apexctlf
+	./apexctl
 	xmodmap config/Xmodmap
 
 disable: check-root
 	./apex-reset
 
 #global installation
-install: check-build check-root enable
+install: check-build check-root
 	#make dirs
 	mkdir -p /etc/udev/hwdb.d
 	mkdir -p /etc/udev/rules.d
