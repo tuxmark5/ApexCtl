@@ -26,16 +26,17 @@ check-root:
 	[[ `whoami` = "root" ]]
 check-installed:
 	[ -f /usr/local/sbin/apexctl ]
-	[ -f /usr/local/sbin/apexctl-reset ]
+	[ -f /usr/local/sbin/apexctl-resethub ]
 	[ -f /etc/udev/hwdb.d/90-apex.hwdb ]
 	[ -f /etc/udev/rules.d/90-apexctl.rules ]
 	[ -f /etc/X11/Xmodmap.bak ]
+	echo -en "ApexCtl is fully installed\n"
 
 #basic commands
 build: $(binary) apexctl
 
 enable: check-root
-	./apexctl
+	./apexctlf
 	xmodmap config/Xmodmap
 
 disable: check-root
@@ -48,7 +49,7 @@ install: check-build check-root enable
 	mkdir -p /etc/udev/rules.d
 	#install binary
 	install -m 755 apexctl /usr/local/sbin/apexctl
-	install -m 755 apexctl-reset /usr/local/sbin/apexctl-reset
+	install -m 755 apexctl-resethub /usr/local/sbin/apexctl-resethub
 	#install udev rules
 	install config/90-apex.hwdb /etc/udev/hwdb.d/
 	install config/90-apexctl.rules /etc/udev/rules.d/
@@ -63,7 +64,7 @@ uninstall: check-root disable
 	#remove binary and udev rules
 	rm -f \
 		/usr/local/sbin/apexctl \
-		/usr/local/sbin/apexctl-reset \
+		/usr/local/sbin/apexctl-resethub \
 		/etc/udev/hwdb.d/90-apex.hwdb \
 		/etc/udev/rules.d/90-apexctl.rules
 	#unapply Xmodmap using backup made during install
