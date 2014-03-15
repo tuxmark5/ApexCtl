@@ -27,7 +27,6 @@ L2    = 700a9
 L3    = 700aa
 L4    = 700ab
 
-device event number 9
 V+    = c00e9
 V-    = c00e9
 Vmute = c00e2
