@@ -40,7 +40,45 @@ You will have to run ~/.local/bin/apexctl manually (as root) to enable the extra
 make && make local-install
 ```
 
-#### Notes ####
+## Usage ##
+
+### Help ###
+```bash
+apexctl --help
+```
+
+### Enable Macro Keys ###
+```bash
+apexctl
+```
+
+### Apex :: Set Colour Zones ###
+```bash
+apexctl colors \
+	-s RRGGBB:A \
+	-n RRGGBB:A \
+	-e RRGGBB:A \
+	-w RRGGBB:A \
+	-l RRGGBB:A
+```
+Where RR, GG, and BB are in the domain of [00,ff], and A is in the domain of [0,8].  
+
+Example:
+```bash
+apexctl colors \
+	-s bb33bb:6 \
+	-n ee1111:6 \
+	-e 33aa33:6 \
+	-w 88ee88:6 \
+	-l aa7777:6
+```
+
+### Apex [Raw] :: Set Brightness ###
+```bash
+apexctl br (1..8)
+```
+
+## Notes ##
 Some distros ( fedora 19, for example ) do not have /usr/local/sbin in their secure_path. This means you cannot just run ```sudo apexctl```, you will have to run ```sudo -E apexctl``` or ```sudo /usr/local/sbin/apexctl```. To fix this, there are two options.
 
 Find the line that sets secure_path in /etc/sudoers and change it to the following ( or anything that includes /usr/local/sbin ):
