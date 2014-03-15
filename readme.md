@@ -8,19 +8,19 @@ Zimmux : [github.com/Zimmux](http://github.com/Zimmux)
 kiwistrongis : [github.com/kiwistrongis](http://github.com/kiwistrongis)  
 
 ## Dependencies ##
-Debian:
+#### Debian: ####
 ```bash
 sudo aptitude install ghc libusb-1.0-0-dev cabal-install git pkg-config
 cabal update
 cabal install usb cmdargs
 ```
-Fedora:
+#### Fedora: ####
 ```bash
 sudo yum -y install ghc libusb libusb-devel cabal-install git pkgconfig
 cabal update
 cabal install usb cmdargs
 ```
-Other:  
+#### Other: ####
 Install GHC, libusb 1.0.0 headers, cabal. Then:
 ```bash
 cabal update
@@ -40,8 +40,8 @@ You will have to run ~/.local/bin/apexctl manually (as root) to enable the extra
 make && make local-install
 ```
 
-#### Notes ####
-Some distros ( fedora 19, for example ) do not have /usr/local/sbin in their secure_path. This means you cannot just run ```sudo apexctl```, you will have to run ```sudo -E apexctl``` or ```sudo /usr/local/sbin/apexctl```. To fix this, there are two options.
+### Notes ###
+Some distros ( Fedora 19, for example ) do not have /usr/local/sbin in their secure_path. This means you cannot just run ```sudo apexctl```, you will have to run ```sudo -E apexctl``` or ```sudo /usr/local/sbin/apexctl```. To fix this, there are two options.
 
 Find the line that sets secure_path in /etc/sudoers and change it to the following ( or anything that includes /usr/local/sbin ):
 ```
