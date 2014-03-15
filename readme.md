@@ -93,9 +93,9 @@ apexctl br 6
 ```
 
 ## Notes ##
-Some distros ( fedora 19, for example ) do not have /usr/local/sbin in their secure_path. This means you cannot just run ```sudo apexctl```, you will have to run ```sudo -E apexctl``` or ```sudo /usr/local/sbin/apexctl```. To fix this, there are two options.
+Some distros ( Fedora 19, for example ) do not have ```/usr/local/sbin``` in their secure_path. This means you cannot just run ```sudo apexctl```, you will have to run ```sudo -E apexctl``` or ```sudo /usr/local/sbin/apexctl```. To fix this, there are two options.
 
-Find the line that sets secure_path in /etc/sudoers and change it to the following ( or anything that includes /usr/local/sbin ):
+Find the line that sets secure_path in ```/etc/sudoers``` and change it to the following ( or anything that includes ```/usr/local/sbin``` ):
 ```
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 ```
