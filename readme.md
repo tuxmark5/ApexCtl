@@ -1,26 +1,29 @@
-## ApexCtl :: Steelseries Apex and Apex [Raw] support for Linux
+# ApexCtl #
+
 ===============================================================
 
+## Steelseries Apex and Apex [Raw] support for Linux ##
+
 ### Contributors ###
-tuxmark5 : [github.com/tuxmark5](http://github.com/tuxmark5)
-Zimmux : [github.com/Zimmux](http://github.com/Zimmux)
-kiwistrongis : [github.com/kiwistrongis](http://github.com/kiwistrongis)
+tuxmark5 : [github.com/tuxmark5](http://github.com/tuxmark5)  
+Zimmux : [github.com/Zimmux](http://github.com/Zimmux)  
+kiwistrongis : [github.com/kiwistrongis](http://github.com/kiwistrongis)  
 
 ## Dependencies ##
-debian:
+Debian:
 ```bash
 sudo aptitude install ghc libusb-1.0-0-dev cabal-install git pkg-config
 cabal update
 cabal install usb cmdargs
 ```
-fedora:
+Fedora:
 ```bash
 sudo yum -y install ghc libusb libusb-devel cabal-install git pkgconfig
 cabal update
 cabal install usb cmdargs
 ```
-Other:
-Install GHC, libusb 1.0.0 headers, cabal
+Other:  
+Install GHC, libusb 1.0.0 headers, cabal. Then:
 ```bash
 cabal update
 cabal install usb cmdargs
