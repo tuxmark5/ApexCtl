@@ -2,6 +2,8 @@
 
 ### Steelseries Apex and Apex [Raw] support for Linux ###
 
+=========================================================
+
 ### Contributors ###
 tuxmark5 : [github.com/tuxmark5](http://github.com/tuxmark5)  
 Zimmux : [github.com/Zimmux](http://github.com/Zimmux)  
@@ -61,7 +63,15 @@ apexctl colors \
 	-w RRGGBB:A \
 	-l RRGGBB:A
 ```
-Where RR, GG, and BB are in the domain of [00,ff], and A is in the domain of [0,8].  
+```bash
+apexctl colors \
+	--south=RRGGBB:A \
+	--north=RRGGBB:A \
+	--east=RRGGBB:A \
+	--west=RRGGBB:A \
+	--logo=RRGGBB:A
+```
+Where RR, GG, and BB are in the domain of [00,ff], and A is in the domain of [0,8].
 
 Example:
 ```bash
@@ -76,6 +86,10 @@ apexctl colors \
 #### Apex [Raw] :: Set Brightness ####
 ```bash
 apexctl br (1..8)
+```
+Example:
+```bash
+apexctl br 6
 ```
 
 ## Notes ##
