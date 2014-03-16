@@ -71,7 +71,7 @@ apexctl colors \
 	--west=RRGGBB:A \
 	--logo=RRGGBB:A
 ```
-Where RR, GG, and BB are in the domain of [00,ff], and A is in the domain of [0,8].
+Where RR, GG, and BB are in the domain of [00,ff], and A is in the domain of [1,8].
 
 Example:
 ```bash
