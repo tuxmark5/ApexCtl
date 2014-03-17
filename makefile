@@ -11,6 +11,7 @@ config_files = \
 	config/90-apex.hwdb \
 	config/Xmodmap
 binary = dist/build/apexctl/apexctl
+binary_install_dir = /usr/local/sbin
 
 #build defs
 $(binary): $(hs_files)
@@ -22,14 +23,16 @@ apexctl: $(binary)
 #checks
 check-build:
 	[ -f apexctl ]
+	[ -f $(binary) ]
 check-root:
 	[[ `whoami` = "root" ]]
 check-installed:
-	[ -f /usr/local/sbin/apexctl ]
-	[ -f /usr/local/sbin/apexctl-reset ]
+	[ -f $(binary_install_dir)/apexctl ]
+	[ -f $(binary_install_dir)/apexctl-resethub ]
 	[ -f /etc/udev/hwdb.d/90-apex.hwdb ]
 	[ -f /etc/udev/rules.d/90-apexctl.rules ]
 	[ -f /etc/X11/Xmodmap.bak ]
+	echo -en "ApexCtl is fully installed\n"
 
 #basic commands
 build: $(binary) apexctl
@@ -42,13 +45,14 @@ disable: check-root
 	./apex-reset
 
 #global installation
-install: check-build check-root enable
+install: check-build check-root
 	#make dirs
 	mkdir -p /etc/udev/hwdb.d
 	mkdir -p /etc/udev/rules.d
 	#install binary
-	install -m 755 apexctl /usr/local/sbin/apexctl
-	install -m 755 apexctl-reset /usr/local/sbin/apexctl-reset
+	install -m 755 apexctl $(binary_install_dir)/apexctl
+	#install scripts
+	install -m 755 apexctl-resethub $(binary_install_dir)/apexctl-resethub
 	#install udev rules
 	install config/90-apex.hwdb /etc/udev/hwdb.d/
 	install config/90-apexctl.rules /etc/udev/rules.d/
@@ -60,10 +64,10 @@ install: check-build check-root enable
 	udevadm control --reload
 
 uninstall: check-root disable
-	#remove binary and udev rules
+	#remove binary, scripts, and udev rules
 	rm -f \
-		/usr/local/sbin/apexctl \
-		/usr/local/sbin/apexctl-reset \
+		$(binary_install_dir)/apexctl \
+		$(binary_install_dir)/apexctl-resethub \
 		/etc/udev/hwdb.d/90-apex.hwdb \
 		/etc/udev/rules.d/90-apexctl.rules
 	#unapply Xmodmap using backup made during install
@@ -84,11 +88,14 @@ local-install: check-build
 	#install binary
 	install apexctl ~/.local/bin/apexctl
 	chmod +x ~/.local/bin/apexctl
+	#install scripts
+	install apexctl-resethub ~/.local/bin/apexctl-resethub
+	chmod +x ~/.local/bin/apexctl-resethub
 	#install Xmodmap locally
 	install config/Xmodmap ~/.Xmodmap
 
 local-uninstall:
-	#remove binary and Xmodmap
+	#remove binary, scripts, and Xmodmap
 	rm -f ~/.local/bin/apexctl ~/.Xmodmap
 
 local-reinstall: check-build \

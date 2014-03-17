@@ -1,0 +1,35 @@
+M1    = 700f4
+M2    = 700f5
+M3    = 700f6
+M4    = 700f7
+M5    = 700f8
+M6    = 700f9
+M7    = 700fa
+M8    = 700fb
+M9    = 700fc
+M10   = 700fd
+M11   = 700fe
+M12   = 700ff
+
+MX1   = 700e8
+MX2   = 700e9
+MX3   = 700ea
+MX4   = 700eb
+MX5   = 700ec
+MX6   = 700ed
+MX7   = 700ee
+MX8   = 700ef
+MX9   = 700f0
+MX10  = 700f1
+
+L1    = 700a8
+L2    = 700a9
+L3    = 700aa
+L4    = 700ab
+
+V+    = c00e9
+V-    = c00e9
+Vmute = c00e2
+Mprev = c00b6
+Mnext = c00b5
+Mpaus = c00cd

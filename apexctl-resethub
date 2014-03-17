@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#help
+if [ $# -eq 0 ] || [[ $1 =~ "-h" ]];then
+	echo -e "apexct-resethub :: A script for resetting usb hubs"
+	echo -e "Useful in the case that you mess something up with your keyboard or something. You must run it as root."
+	echo
+	echo -e "Usage:"
+	echo -e "apexct-resethub <hub>"
+	echo -e "\tReset the given hub"
+	echo -e "\tExample: apexctl-resethub"
+	echo -e "apexct-resethub < --all | -a >"
+	echo -e "\tReset every usb hub on the machine"
+	echo -e "apexct-resethub [ --help | -h ]"
+	echo -e "\tShow this help"
+	exit 0
+fi
+
+#root check
+if [[ `whoami` != 'root' ]]; then
+	echo -e "You must run this as root"
+	exit 1
+fi
+
+#get list of hubs to reset
+if [[ $1 =~ "-a" ]]; then
+	echo -e "Resetting all hubs"
+	exit 0
+	list=$(find /sys/bus/pci/drivers/ \
+		-wholename *hci*/*:*:* -printf "%f\n")
+else
+	list=$(find /sys/bus/pci/drivers/ \
+		-wholename *hci*/$1 -printf "%f")
+	#check that hub exists
+	echo -e "Resetting hub $1"
+fi
+
+#reset the hubs
+for hub in $list; do
+	echo -e "Unbinding $hub"
+	echo -n $hub > /sys/bus/pci/drivers/xhci_hcd/unbind
+	echo -e "Binding $hub"
+	echo -n $hub > /sys/bus/pci/drivers/xhci_hcd/bind
+done
