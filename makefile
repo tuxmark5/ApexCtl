@@ -4,6 +4,9 @@ freshen: clean build
 clean:
 	rm -rf dist apexctl
 
+#vars
+SHELL := /bin/bash
+
 #lists
 hs_files = src/Main.hs
 config_files = \

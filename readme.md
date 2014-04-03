@@ -51,12 +51,12 @@ apexctl --help
 
 #### Enable Macro Keys ####
 ```bash
-apexctl
+sudo apexctl
 ```
 
 #### Apex :: Set Colour Zones ####
 ```bash
-apexctl colors \
+sudo apexctl colors \
 	-s RRGGBB:A \
 	-n RRGGBB:A \
 	-e RRGGBB:A \
@@ -64,7 +64,7 @@ apexctl colors \
 	-l RRGGBB:A
 ```
 ```bash
-apexctl colors \
+sudo apexctl colors \
 	--south=RRGGBB:A \
 	--north=RRGGBB:A \
 	--east=RRGGBB:A \
@@ -75,7 +75,7 @@ Where RR, GG, and BB are in the domain of [00,ff], and A is in the domain of [1,
 
 Example:
 ```bash
-apexctl colors \
+sudo apexctl colors \
 	-s bb33bb:6 \
 	-n ee1111:6 \
 	-e 33aa33:6 \
@@ -85,11 +85,11 @@ apexctl colors \
 
 #### Apex [Raw] :: Set Brightness ####
 ```bash
-apexctl br (1..8)
+sudo apexctl br (1..8)
 ```
 Example:
 ```bash
-apexctl br 6
+sudo apexctl br 6
 ```
 
 ## Notes ##
