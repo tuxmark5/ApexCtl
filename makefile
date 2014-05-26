@@ -60,7 +60,8 @@ install: check-build check-root
 	install config/90-apex.hwdb /etc/udev/hwdb.d/
 	install config/90-apexctl.rules /etc/udev/rules.d/
 	#install Xmodmap globally
-	cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak
+	[[ -f /etc/X11/Xmodmap ]] && \
+		cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak
 	cat config/Xmodmap >> /etc/X11/Xmodmap
 	#install reload udev rules
 	udevadm hwdb --update
