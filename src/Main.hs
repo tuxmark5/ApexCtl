@@ -39,6 +39,8 @@ data ApexCommand
   } deriving (Show)
 
 instance Binary ApexCommand where
+  get = undefined 
+
   put (CmdEnableExtraKeys) = do
     put32 [0x02, 0x00, 0x02]
 
@@ -69,6 +71,8 @@ data Color = Color Word8 Word8 Word8 Word8
   deriving (Data, Show, Typeable)
 
 instance Binary Color where
+  get = undefined
+
   put (Color r g b a) = do
     put r
     put g
