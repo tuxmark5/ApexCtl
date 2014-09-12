@@ -44,9 +44,6 @@ enable: check-root
 	./apexctl
 	xmodmap config/Xmodmap
 
-disable: check-root
-	./apex-reset
-
 #global installation
 install: check-build check-root
 	#make dirs
@@ -67,7 +64,7 @@ install: check-build check-root
 	udevadm hwdb --update
 	udevadm control --reload
 
-uninstall: check-root disable
+uninstall: check-root
 	#remove binary, scripts, and udev rules
 	rm -f \
 		$(binary_install_dir)/apexctl \
