@@ -1,15 +1,23 @@
 #!/bin/bash
 
-#root check
-if [[ `whoami` != 'root' ]]; then
-	echo -en "You must run this as root\n"
-	exit 1
-fi
-
 #profile application
-apexctl colors \
-	-s bb33bb:6 \
-	-n ee1111:6 \
-	-e 33aa33:6 \
-	-w 88ee88:6 \
-	-l aa7777:6
+#apexctl colors \
+#	-s bb33bb:6 \
+#	-n ee1111:8 \
+#	-e 33aa33:6 \
+#	-w 88ee88:7 \
+#	-l aa7777:6
+#profile application
+sudo apexctl colors \
+	-s bb33bb:8 \
+	-n ee1111:8 \
+	-e 33aa33:8 \
+	-w 88ee88:8 \
+	-l aa7777:8
+#profile application
+#apexctl colors \
+#	-s ee2222:8 \
+#	-n ffffff:1 \
+#	-e 33aa33:6 \
+#	-w 88ee88:7 \
+#	-l aa7777:6
