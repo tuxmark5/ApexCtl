@@ -22,6 +22,12 @@ sudo yum -y install ghc libusb libusb-devel cabal-install git pkgconfig
 cabal update
 cabal install usb cmdargs
 ```
+#### Arch: ####
+```bash
+sudo pacman -Syu ghc libusb libusb cabal-install pkg-config
+cabal update
+cabal install usb cmdargs
+```
 #### Other: ####
 Install GHC, libusb 1.0.0 headers, cabal. Then:
 ```bash
