@@ -59,8 +59,8 @@ install: check-build check-root
 	#install Xmodmap globally
 	[[ -f /etc/X11/Xmodmap ]] && \
 		cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak
-	cat config/Xmodmap >> /etc/X11/Xmodmap
-	#install reload udev rules
+	cat config/Xmodmap >> /etc/X11/Xmodmap || :
+	#reload udev rules
 	udevadm hwdb --update
 	udevadm control --reload
 
@@ -74,8 +74,8 @@ uninstall: check-root
 	#unapply Xmodmap using backup made during install
 	[[ -f /etc/X11/Xmodmap.bak ]] && \
 		cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak2 && \
-		mv /etc/X11/Xmodmap.bak /etc/X11/Xmodmap
-	#install reload udev rules
+		mv /etc/X11/Xmodmap.bak /etc/X11/Xmodmap || :
+	#reload udev rules
 	udevadm hwdb --update
 	udevadm control --reload
 
