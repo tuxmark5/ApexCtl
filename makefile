@@ -58,8 +58,8 @@ install: check-build check-root
 	install config/90-apexctl.rules /etc/udev/rules.d/
 	#install Xmodmap globally
 	[[ -f /etc/X11/Xmodmap ]] && \
-		cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak
-	cat config/Xmodmap >> /etc/X11/Xmodmap || :
+		cp /etc/X11/Xmodmap /etc/X11/Xmodmap.bak || :
+	cat config/Xmodmap >> /etc/X11/Xmodmap
 	#reload udev rules
 	udevadm hwdb --update
 	udevadm control --reload
