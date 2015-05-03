@@ -219,17 +219,19 @@ modeToCommand m@ModeSetPollFrequency {} = CmdSetPollFrequency (toFrequency $ arg
 
 {- ########################################################################################## -}
 
+controlSetup :: ControlSetup
+controlSetup = ControlSetup 
+  { controlSetupRequestType = Class
+  , controlSetupRecipient = ToInterface
+  , controlSetupRequest = _SET_REPORT
+  , controlSetupValue = 0x0200
+  , controlSetupIndex = 0
+  }
+
 apexCtl :: DeviceHandle -> ByteString -> IO ()
 apexCtl devHndl d = do
   putStrLn "WRITING SET_REPORT"
-  writeControlExact devHndl
-    Class 
-    ToInterface 
-    _SET_REPORT 
-    0x0200 
-    0
-    d
-    noTimeout
+  writeControlExact devHndl controlSetup d noTimeout
 
 apexCommand :: Binary b => DeviceHandle -> b -> IO ()
 apexCommand devHndl b = do
@@ -238,13 +240,7 @@ apexCommand devHndl b = do
 
 apexRet :: DeviceHandle -> IO ()
 apexRet devHndl = do
-  (r, s) <- readControl devHndl 
-    Class 
-    ToInterface 
-    _SET_REPORT 
-    0x0200 
-    0      
-    32 noTimeout
+  (r, s) <- readControl devHndl controlSetup 32 noTimeout
   putStrLn $ hex r
   putStrLn $ show s
 

@@ -8,7 +8,7 @@ build-depends:  base -any,
                 bytestring -any,
                 cmdargs -any,
                 vector -any, 
-                usb == 1.2.0.1
+                usb >= 1.3.0.2
 description:    .
 author:         Audrius Šaikūnas
 executable:     apexctl
