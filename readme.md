@@ -10,29 +10,34 @@ Zimmux : [github.com/Zimmux](http://github.com/Zimmux)
 kiwistrongis : [github.com/kiwistrongis](http://github.com/kiwistrongis)  
 
 ## Dependencies ##
+ - git, pkg-config
+ - ghc
+ - cabal, cabal-install
+ - libusb 1.0.0 and headers
+
 #### Debian: ####
 ```bash
 sudo aptitude install ghc libusb-1.0-0-dev cabal-install git pkg-config
 cabal update
-cabal install usb-1.2.0.1 cmdargs
+cabal install usb cmdargs
 ```
 #### Fedora: ####
 ```bash
 sudo yum -y install ghc libusb libusb-devel cabal-install git pkgconfig
 cabal update
-cabal install usb-1.2.0.1 cmdargs
+cabal install usb cmdargs
 ```
 #### Arch: ####
 ```bash
-sudo pacman -Syu ghc libusb libusb cabal-install pkg-config
+sudo pacman -Syu ghc libusb cabal-install git pkg-config
 cabal update
-cabal install usb-1.2.0.1 cmdargs
+cabal install usb cmdargs
 ```
 #### Other: ####
 Install GHC, libusb 1.0.0 headers, cabal. Then:
 ```bash
 cabal update
-cabal install usb-1.2.0.1 cmdargs
+cabal install usb cmdargs
 ```
 
 ## Installation ##
@@ -43,7 +48,7 @@ make && sudo make install
 ```
 
 #### Local User Install ####
-You will have to run ~/.local/bin/apexctl manually (as root) to enable the extra keys after every boot.
+You will have to run `~/.local/bin/apexctl` manually (as root) to enable the extra keys after every boot.
 ```bash
 make && make local-install
 ```
@@ -99,9 +104,9 @@ sudo apexctl br 6
 ```
 
 ## Notes ##
-Some distros ( Fedora 19, for example ) do not have ```/usr/local/sbin``` in their secure_path. This means you cannot just run ```sudo apexctl```, you will have to run ```sudo -E apexctl``` or ```sudo /usr/local/sbin/apexctl```. To fix this, there are two options.
+Some distros ( Fedora 19, for example ) do not have `/usr/local/sbin` in their `secure_path`. This means you cannot just run `sudo apexctl`, you will have to run `sudo -E apexctl` or `sudo /usr/local/sbin/apexctl`. To fix this, there are two options.
 
-Find the line that sets secure_path in ```/etc/sudoers``` and change it to the following ( or anything that includes ```/usr/local/sbin``` ):
+Find the line that sets secure_path in `/etc/sudoers` and change it to the following ( or anything that includes `/usr/local/sbin` ):
 ```
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 ```
