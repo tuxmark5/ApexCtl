@@ -10,11 +10,12 @@ Zimmux : [github.com/Zimmux](http://github.com/Zimmux)
 kiwistrongis : [github.com/kiwistrongis](http://github.com/kiwistrongis)  
 
 ## Dependencies ##
+ - udev >= 206
  - git, pkg-config
  - ghc
  - cabal, cabal-install
  - libusb 1.0.0 and headers
- - haskell usb (version >= 1.3.0.2) and cmdargs libraries 
+ - haskell usb (>= 1.3.0.2) and cmdargs libraries 
 
 #### Debian: ####
 ```bash
