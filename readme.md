@@ -14,6 +14,7 @@ kiwistrongis : [github.com/kiwistrongis](http://github.com/kiwistrongis)
  - ghc
  - cabal, cabal-install
  - libusb 1.0.0 and headers
+ - haskell usb (version >= 1.3.0.2) and cmdargs libraries 
 
 #### Debian: ####
 ```bash
