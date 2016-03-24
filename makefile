@@ -6,7 +6,7 @@ clean:
 
 # vars
 SHELL := /bin/bash
-INSTALL_ROOT ?= /asdf
+INSTALL_ROOT ?= /
 
 # lists
 hs_files = src/Main.hs
