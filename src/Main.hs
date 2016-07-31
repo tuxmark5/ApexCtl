@@ -271,7 +271,7 @@ withDevice venId prodIds hnd = do
 main :: IO ()
 main = do
   args <- cmdArgs apexArgs
-  withDevice 0x1038 [0x1200, 0x1202, 0x1208] $ \dev -> do
+  withDevice 0x1038 [0x1200, 0x1202, 0x1206, 0x1208] $ \dev -> do
   withDeviceHandle dev $ \devHndl ->
     withDetachedKernelDriver devHndl 0 $
     withClaimedInterface devHndl 0 $ do
